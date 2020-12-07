@@ -9,6 +9,7 @@ import { UserJwtPayload } from "./models/User";
 import authRoutes from "./routes/auth.routes";
 import messageRoutes from "./routes/message.routes";
 import messagesRoutes from "./routes/messages.routes";
+import helmet from "helmet";
 
 declare global {
   namespace Express {
@@ -23,6 +24,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors);
+app.use(helmet());
 
 app.get("/health", (req, res, next) => {
   res.send("OK");
